@@ -1,17 +1,17 @@
 <template>
-  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-  <Home />
+  <!-- <Home /> -->
+  <Formular />
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import Home from './components/Home.vue'
-
+import Formular from './components/Formular.vue'
 
 export default {
   name: 'App',
   components: {
     Home,
+    Formular
   }
 }
 </script>
