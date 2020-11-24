@@ -1,6 +1,6 @@
 <template>
   <div class="formular">
-    <button class="homeButton">🏠</button>
+    <button class="homeButton" v-on:click="goHome">🏠</button>
     <h1>Veuillez confirmer vos informations</h1>
     <div class="info">
       <div class="data">
@@ -62,6 +62,9 @@ export default {
     }
   },
   methods: {
+    goHome() {
+      this.$router.push('/')
+    },
     edite(value) {
       this.focus = Object.keys(value)[0];
       console.log(this.focus);
