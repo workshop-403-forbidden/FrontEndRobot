@@ -74,8 +74,6 @@ export default {
     },
     edite(value) {
       this.focus = Object.keys(value)[0];
-      console.log(this.focus);
-      console.log(this[this.focus]);
     },
     dontEdit(value) {
       this.focus = value;
@@ -105,7 +103,10 @@ export default {
           })
       };
       fetch("https://workshop.mathiasughetto.fr/api/info_patients", requestOptions)
-      .then(response => console.log(response.json()))
+      .then(response => {
+        console.log(response.json())
+        this.$router.push('/analyse');
+      })
     }
   },
 }

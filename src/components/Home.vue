@@ -64,7 +64,6 @@ methods: {
       } else {
         res.json().then(data => {
         this.data = data;
-        console.log(this.data);
         this.$store.commit('MODIFICATION_STATE', this.data);
         this.goToFormular();
       });
