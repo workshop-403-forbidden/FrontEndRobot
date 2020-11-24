@@ -3,14 +3,14 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     id: '',
-    nom: 'UGHETTO',
-    prenom: 'Mathias',
+    nom: '',
+    prenom: '',
     dateDeNaissance: new Date(),
-    adressePostale: '14 chemin dupieux, MontBrison',
-    adresseMail: 'skh.dgf@sjghkef.com',
-    tel: '0679345618',
-    nomMedecinTraitant: 'Dc. Rosenblum',
-    numSecu: 'hujgsdf'
+    adressePostale: '',
+    adresseMail: '',
+    tel: '',
+    nomMedecinTraitant: '',
+    numSecu: ''
   },
   mutations: {
     MODIFICATION_STATE(state, data) {
