@@ -1,58 +1,63 @@
 <template>
   <div class="letterclavier">
-    <button class="touche">1</button>
-    <button class="touche">2</button>
-    <button class="touche">3</button>
-    <button class="touche">4</button>
-    <button class="touche">5</button>
-    <button class="touche">6</button>
-    <button class="touche">7</button>
-    <button class="touche">8</button>
-    <button class="touche">9</button>
-    <button class="touche">0</button>
-    <button class="touche">{{upperCased('a')}}</button>
-    <button class="touche">{{upperCased('b')}}</button>
-    <button class="touche">{{upperCased('c')}}</button>
-    <button class="touche">{{upperCased('d')}}</button>
-    <button class="touche">{{upperCased('e')}}</button>
-    <button class="touche">{{upperCased('f')}}</button>
-    <button class="touche">{{upperCased('g')}}</button>
-    <button class="touche">{{upperCased('h')}}</button>
-    <button class="touche">{{upperCased('i')}}</button>
-    <button class="touche">{{upperCased('j')}}</button>
+    <button class="touche" v-on:click="addCharacter(1)">1</button>
+    <button class="touche" v-on:click="addCharacter(2)">2</button>
+    <button class="touche" v-on:click="addCharacter(3)">3</button>
+    <button class="touche" v-on:click="addCharacter(4)">4</button>
+    <button class="touche" v-on:click="addCharacter(5)">5</button>
+    <button class="touche" v-on:click="addCharacter(6)">6</button>
+    <button class="touche" v-on:click="addCharacter(7)">7</button>
+    <button class="touche" v-on:click="addCharacter(8)">8</button>
+    <button class="touche" v-on:click="addCharacter(9)">9</button>
+    <button class="touche" v-on:click="addCharacter(0)">0</button>
+    <button class="touche" v-on:click="addCharacter('@')">@</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('a'))">{{upperCased('a')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('b'))">{{upperCased('b')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('c'))">{{upperCased('c')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('d'))">{{upperCased('d')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('e'))">{{upperCased('e')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('f'))">{{upperCased('f')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('g'))">{{upperCased('g')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('h'))">{{upperCased('h')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('i'))">{{upperCased('i')}}</button>
+    <button class="toucheBackward" v-on:click="removeCharacter">⬅</button>
     <button class="toucheShift" :class="(toUpperCase)&&'upperCase'" v-on:click="upper()">⬆</button>
-    <button class="touche">{{upperCased('k')}}</button>
-    <button class="touche">{{upperCased('l')}}</button>
-    <button class="touche">{{upperCased('m')}}</button>
-    <button class="touche">{{upperCased('n')}}</button>
-    <button class="touche">{{upperCased('o')}}</button>
-    <button class="touche">{{upperCased('p')}}</button>
-    <button class="touche">{{upperCased('q')}}</button>
-    <button class="touche">{{upperCased('r')}}</button>
-    <button class="touche">{{upperCased('s')}}</button>
-    <button class="touche">{{upperCased('t')}}</button>
-    <button class="touche">{{upperCased('u')}}</button>
-    <button class="touche">{{upperCased('v')}}</button>
-    <button class="touche">{{upperCased('w')}}</button>
-    <button class="touche">{{upperCased('x')}}</button>
-    <button class="touche">{{upperCased('y')}}</button>
-    <button class="touche">{{upperCased('z')}}</button>
-    <button class="touche">@</button>
-    <button class="touche">.</button>
-    <button class="toucheSpace"> </button>
-    <button class="touche">?</button>
-    <button class="touche">!</button>
-    
-    
+    <button class="touche" v-on:click="addCharacter(upperCased('j'))">{{upperCased('j')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('k'))">{{upperCased('k')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('l'))">{{upperCased('l')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('m'))">{{upperCased('m')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('n'))">{{upperCased('n')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('o'))">{{upperCased('o')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('p'))">{{upperCased('p')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('q'))">{{upperCased('q')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('r'))">{{upperCased('r')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('s'))">{{upperCased('s')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('t'))">{{upperCased('t')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('u'))">{{upperCased('u')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('v'))">{{upperCased('v')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('w'))">{{upperCased('w')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('x'))">{{upperCased('x')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('y'))">{{upperCased('y')}}</button>
+    <button class="touche" v-on:click="addCharacter(upperCased('z'))">{{upperCased('z')}}</button>
+    <button class="touche" v-on:click="addCharacter('.')">.</button>
+    <button class="touche" v-on:click="addCharacter(',')">,</button>
+    <button class="toucheShift" v-on:click="enter">✔</button>
+    <button class="toucheSpace" v-on:click="addCharacter(' ')"> </button>
+    <button class="touche" v-on:click="addCharacter('?')">?</button>
+    <button class="touche" v-on:click="addCharacter('!')">!</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'LetterClavier',
+  props: {
+    addCharacter: Function,
+    removeCharacter: Function,
+    enter: Function
+  },
   data () {
     return {
-      arrayLetters: 'abcdefghijklmnopqrstuvwxyz'.split(''),
       toUpperCase: false,
     }
   },
@@ -79,7 +84,7 @@ export default {
     right: 2px;
     margin: 5px;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
     text-align: center;
   }
 
@@ -101,6 +106,16 @@ export default {
     font-size: 30px;
     text-align: center;
     grid-area: span 1 / span 7;
+  }
+
+  .toucheBackward {
+    margin: 5px;
+    background-color: rgb(84, 70, 84);
+    color: beige;
+    border-radius: 25px;
+    font-size: 30px;
+    text-align: center;
+    grid-area: span 1 / span 2;
   }
 
   .upperCase {
