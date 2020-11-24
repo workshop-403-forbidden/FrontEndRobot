@@ -125,6 +125,7 @@ export default {
     background-color: wheat;
     font-size: 30px;
     border-radius: 25px;
+    min-height: 30px;
   }
 
   .editable {
