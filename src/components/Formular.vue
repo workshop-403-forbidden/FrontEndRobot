@@ -26,6 +26,9 @@
         <div class="value editable" :class="(focus === 'tel')&&'focus'" v-on:click="edite({tel})">{{ tel }}</div>
       </div>
     </div>
+    <button class="confirmationButton" v-on:click="postData">
+      Confirmation ✔
+    </button>
     <div v-if="focus.length > 0">
       <LetterClavier
       :add-character=addCharacter
@@ -49,18 +52,22 @@ export default {
   directives: {
     ClickAway: VueClickAway,
   },
+  props: {
+    data: Object
+  },
   data () {
     return {
-      nom: 'UGHETTO',
-      prenom: 'Mathias',
-      date_de_naissance: `${new Date('1995-12-17T03:24:00').getDate() <= 9 ? '0'+new Date('1995-12-17T03:24:00').getDate() : new Date('1995-12-17T03:24:00').getDate()}/${new Date('1995-12-17T03:24:00').getMonth()+1 <= 9 ? '0'+new Date('1995-12-17T03:24:00').getMonth()+1:new Date('1995-12-17T03:24:00').getMonth()+1}/${new Date('1995-12-17T03:24:00').getFullYear()}`,
-      adresse_postal: '14 chemin dupieux, MontBrison',
-      adresse_mail: 'skh.dgf@sjghkef.com',
-      tel: '0679345618',
-      nom_medecin_traitant: 'Dc. Rosenblum',
+      nom: this.$store.state.nom,
+      prenom: this.$store.state.prenom,
+      date_de_naissance: `${this.$store.state.dateDeNaissance.getDate() <= 9 ? '0'+this.$store.state.dateDeNaissance.getDate() : this.$store.state.dateDeNaissance.getDate()}/${this.$store.state.dateDeNaissance.getMonth()+1 <= 9 ? '0'+this.$store.state.dateDeNaissance.getMonth():this.$store.state.dateDeNaissance.getMonth()}/${this.$store.state.dateDeNaissance.getFullYear()}`,
+      adresse_postal: this.$store.state.adressePostale,
+      adresse_mail: this.$store.state.adresseMail,
+      tel: this.$store.state.tel,
+      nom_medecin_traitant: this.$store.state.nomMedecinTraitant,
       focus: '',
     }
   },
+
   methods: {
     goHome() {
       this.$router.push('/')
@@ -81,6 +88,24 @@ export default {
     },
     enter() {
       this.focus='';
+    },
+    postData() {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nom: this.nom,
+          prenom: this.prenom,
+          dateDeNaissance: this.$store.state.dateDeNaissance,
+          adressePostale: this.adresse_postal,
+          adresseMail: this.adresse_mail,
+          tel: this.tel,
+          numSecu: this.$store.state.numSecu,
+          nomMedecinTraitant: this.nom_medecin_traitant,
+          })
+      };
+      fetch("https://workshop.mathiasughetto.fr/api/info_patients", requestOptions)
+      .then(response => console.log(response.json()))
     }
   },
 }
@@ -98,6 +123,20 @@ export default {
     text-align: center;
     padding: 15px;
     margin: 10px;
+  }
+
+  .confirmationButton {
+    background-color: rgb(17, 131, 52);
+    font-size: 30px;
+    border-radius: 25px;
+    text-align: center;
+    color: beige;
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .confirmationButton:hover {
+    background-color: rgb(83, 189, 114);
   }
 
   .info {

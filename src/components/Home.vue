@@ -61,11 +61,18 @@ methods: {
     .then(res => {
       if (!res.ok) {
         this.invalidNumber = true;
-      }
-      res.json().then(data => {
+      } else {
+        res.json().then(data => {
         this.data = data;
+        console.log(this.data);
+        this.$store.commit('MODIFICATION_STATE', this.data);
+        this.goToFormular();
       });
+      }
     })
+  },
+  goToFormular () {
+    this.$router.push('/Formular', this.data)
   }
 }, 
 }
