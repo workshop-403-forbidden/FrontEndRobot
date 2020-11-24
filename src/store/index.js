@@ -10,7 +10,8 @@ export default createStore({
     adresseMail: '',
     tel: '',
     nomMedecinTraitant: '',
-    numSecu: ''
+    numSecu: '',
+    idResponse: -1,
   },
   mutations: {
     MODIFICATION_STATE(state, data) {
@@ -23,6 +24,12 @@ export default createStore({
       state.tel = data.tel;
       state.nomMedecinTraitant = data.nomMedecinTraitant;
       state.numSecu = data.numSecu;
+    },
+    MODIFICATION_ID_RESPONSE(state, idResponse) {
+      state.idResponse = idResponse;
+    },
+    RESET_ID_RESPONSE(state) {
+      state.idResponse = -1;
     },
   },
   actions: {

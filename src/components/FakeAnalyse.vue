@@ -10,6 +10,9 @@
       <div v-if="stape === 4 || stape === 5 || stape === 6 ||  stape === 7">
         <Analyse />
       </div>
+      <div v-if="stape > 7">
+        <Finished />
+      </div>
     </div>
   </div>
 </template>
@@ -18,13 +21,15 @@
 import Loading from './StapesAnlyses/Loading.vue'
 import Installation from './StapesAnlyses/Installation.vue'
 import Analyse from './StapesAnlyses/Analyse.vue'
+import Finished from './StapesAnlyses/Finished.vue'
 
 export default {
   name: 'FakeAnalyse',
   components: {
     Loading,
     Installation,
-    Analyse
+    Analyse,
+    Finished
   },
   data() {
     return {

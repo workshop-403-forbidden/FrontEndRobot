@@ -65,6 +65,7 @@ export default {
       tel: this.$store.state.tel,
       nom_medecin_traitant: this.$store.state.nomMedecinTraitant,
       focus: '',
+      responseIdPatient: '',
     }
   },
 
@@ -99,14 +100,37 @@ export default {
           adresseMail: this.adresse_mail,
           tel: this.tel,
           numSecu: this.$store.state.numSecu,
-          nomMedecinTraitant: this.nom_medecin_traitant,
+          nomMedecinTraitant: this.nom_medecin_traitant
           })
       };
-      fetch("https://workshop.mathiasughetto.fr/api/info_patients", requestOptions)
+      fetch("https://workshop.mathiasughetto.fr/api/patients", requestOptions)
       .then(response => {
-        console.log(response.json())
-        this.$router.push('/analyse');
+        response.json().then(data => {
+          this.responseIdPatient = data["@id"];
+          this.postResult();
+        });
       })
+    },
+    postResult() {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          patient: this.responseIdPatient,
+          dateHeureTest: new Date(),
+          choixPostale: 0,
+          resultat: null
+          })
+      };
+
+      fetch("https://workshop.mathiasughetto.fr/api/resultats", requestOptions)
+      .then(response => {
+        console.log(response);
+        response.json().then(data => {
+          this.$store.commit('MODIFICATION_ID_RESPONSE', data.id);
+          this.$router.push('/analyse')
+        });
+      });
     }
   },
 }

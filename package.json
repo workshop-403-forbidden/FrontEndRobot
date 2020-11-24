@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "qrcode.vue": "^1.7.0",
+    "v-qrcode": "^1.0.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vue3-click-away": "^1.0.5",

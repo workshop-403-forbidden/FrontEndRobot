@@ -32,7 +32,7 @@ components: {
   },
 data () {
   return {
-    socialSecurityNumber: '',
+    socialSecurityNumber: '116895243199818',
     data: {},
     invalidNumber: false,
   }
