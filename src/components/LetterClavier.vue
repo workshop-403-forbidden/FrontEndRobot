@@ -1,5 +1,7 @@
 <template>
   <div class="letterclavier">
+    <button class="labelTouche" >{{label}}</button>
+    <button class="valueTouche" >{{value}}</button>
     <button class="touche" v-on:click="addCharacter(1)">1</button>
     <button class="touche" v-on:click="addCharacter(2)">2</button>
     <button class="touche" v-on:click="addCharacter(3)">3</button>
@@ -52,6 +54,8 @@
 export default {
   name: 'LetterClavier',
   props: {
+    label: String,
+    value: String,
     addCharacter: Function,
     removeCharacter: Function,
     enter: Function
@@ -77,6 +81,26 @@ export default {
 </script>
 
 <style>
+  .labelTouche{
+    background-color:burlywood;
+    font-size: 30px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 25px;
+    margin: 5px;
+    grid-area: span 1 / span 4;
+  }
+
+  .valueTouche{
+    background-color: white;
+    border-radius: 25px;
+    font-size: 30px;
+    text-align: center;
+    padding: 25px;
+    margin: 5px;
+    grid-area: span 1 / span 7;
+  }
+
   .letterclavier {
     position: fixed;
     bottom:0px;

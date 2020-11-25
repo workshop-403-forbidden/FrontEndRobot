@@ -1,7 +1,7 @@
 <template>
   <div class="analyse">
     <div class="lds-ripple"><div></div><div></div></div>
-    <h2>Prélevement en cour</h2>
+    <h2>Prélevement en cours</h2>
   </div>
 </template>
 

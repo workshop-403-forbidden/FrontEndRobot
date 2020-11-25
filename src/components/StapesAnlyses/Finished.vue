@@ -57,6 +57,7 @@ export default {
       fetch(`https://workshop.mathiasughetto.fr${this.results[0]}`, requestOptions)
       .then(result => {
         result.json().then(data => {
+          console.log(data);
           this.$store.commit('RESET_DATA');
           this.$router.push('/');
         })
@@ -70,7 +71,7 @@ export default {
         })
       })
     },
-    printPDF(event) {
+    printPDF() {
       window.open(this.linkPDF);
     }
   },

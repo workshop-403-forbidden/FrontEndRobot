@@ -31,6 +31,8 @@
     </button>
     <div v-if="focus.length > 0">
       <LetterClavier
+      :label=getLabel()
+      :value=getValue()
       :add-character=addCharacter
       :remove-character=removeCharacter
       :enter=enter
@@ -71,6 +73,24 @@ export default {
   },
 
   methods: {
+    getLabel(){
+      switch (this.focus) {
+        case 'adresse_postal':
+          return 'Adresse postal';
+          break;
+        case 'adresse_mail':
+          return 'Adresse e-mail';
+          break;
+        case 'tel':
+          return 'Téléphone';
+          break;
+        default:
+          break;
+      }
+    },
+    getValue(){
+      return this[this.focus]
+    },
     goHome() {
       this.$router.push('/')
     },
