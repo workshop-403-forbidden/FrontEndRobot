@@ -73,20 +73,22 @@ export default {
   },
 
   methods: {
-    getLabel(){
+    getLabel() {
+      let returnLabel = '';
       switch (this.focus) {
         case 'adresse_postal':
-          return 'Adresse postal';
+          returnLabel= 'Adresse postal';
           break;
         case 'adresse_mail':
-          return 'Adresse e-mail';
+          returnLabel= 'Adresse e-mail';
           break;
         case 'tel':
-          return 'Téléphone';
+          returnLabel= 'Téléphone';
           break;
         default:
           break;
       }
+      return returnLabel;
     },
     getValue(){
       return this[this.focus]
