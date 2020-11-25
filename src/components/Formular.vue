@@ -66,6 +66,7 @@ export default {
       nom_medecin_traitant: this.$store.state.nomMedecinTraitant,
       focus: '',
       responseIdPatient: '',
+      token: '',
     }
   },
 
@@ -106,6 +107,8 @@ export default {
       fetch("https://workshop.mathiasughetto.fr/api/patients", requestOptions)
       .then(response => {
         response.json().then(data => {
+          this.token = data.token
+          this.$store.commit('SET_TOKEN', this.token);
           this.responseIdPatient = data["@id"];
           this.postResult();
         });
@@ -119,13 +122,12 @@ export default {
           patient: this.responseIdPatient,
           dateHeureTest: new Date(),
           choixPostale: 0,
-          resultat: null
-          })
+          resultat: null,
+        })
       };
 
       fetch("https://workshop.mathiasughetto.fr/api/resultats", requestOptions)
       .then(response => {
-        console.log(response);
         response.json().then(data => {
           this.$store.commit('MODIFICATION_ID_RESPONSE', data.id);
           this.$router.push('/analyse')

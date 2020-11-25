@@ -11,6 +11,7 @@ export default createStore({
     tel: '',
     nomMedecinTraitant: '',
     numSecu: '',
+    token: '',
     idResponse: -1,
   },
   mutations: {
@@ -25,10 +26,23 @@ export default createStore({
       state.nomMedecinTraitant = data.nomMedecinTraitant;
       state.numSecu = data.numSecu;
     },
+    SET_TOKEN(state, token) {
+      state.token = token;
+    },
     MODIFICATION_ID_RESPONSE(state, idResponse) {
       state.idResponse = idResponse;
     },
-    RESET_ID_RESPONSE(state) {
+    RESET_DATA(state) {
+      state.id = '';
+      state.nom = '';
+      state.prenom = '';
+      state.dateDeNaissance = new Date();
+      state.adressePostale = '';
+      state.adresseMail = '';
+      state.tel = '';
+      state.nomMedecinTraitant = '';
+      state.numSecu = '';
+      state.token = '';
       state.idResponse = -1;
     },
   },

@@ -39,7 +39,7 @@ export default {
   },
   methods:{
     init(){
-      this.interval = setInterval(() => {this.stape += 1}, 5000)
+      this.interval = setInterval(() => {this.stape += 1}, 3000)
     },
     goHome() {
       this.$router.push('/')
